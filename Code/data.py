@@ -29,6 +29,7 @@ class KittiDataset(Dataset):
         return len(self.image_names)
 
     def __normalize(self, arr: np.ndarray) -> np.ndarray:
+        arr = arr.astype(float)
         return cv2.normalize(arr, None, 0.0, 1.0, cv2.NORM_MINMAX)
 
     def __getitem__(self, idx: int) -> Tuple[torch.Tensor, torch.Tensor]:
