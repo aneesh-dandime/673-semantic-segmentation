@@ -14,7 +14,7 @@ class KittiDataset(Dataset):
         self.path = path
         self.shape = shape
         self.input_paths = os.path.join(self.path, 'image_2')
-        self.gt_paths = os.path.join(self.path, 'semantic')
+        self.gt_paths = os.path.join(self.path, 'semantic_rgb')
         self.image_names = self.__get_image_names()
 
     def __get_image_names(self) -> List[str]:
