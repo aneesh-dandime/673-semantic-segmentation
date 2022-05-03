@@ -2,6 +2,7 @@ import os
 import shutil
 import torch
 import numpy as np
+from torch import nn
 from tqdm.autonotebook import tqdm
 
 def train(model, train_dataloader, epochs, lr, epochs_till_chkpt,
@@ -35,6 +36,10 @@ def train(model, train_dataloader, epochs, lr, epochs_till_chkpt,
                 gt = gt.float().cuda()
 
                 model_output = model(model_input)
+
+                if isinstance(loss_func, nn.CrossEntropyLoss):
+                    model_output = torch.squeeze(model_output)
+                    gt = torch.squeeze(model_output)
 
                 loss = loss_func(model_output, gt)
 

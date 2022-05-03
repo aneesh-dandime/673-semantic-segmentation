@@ -38,7 +38,7 @@ if __name__ == '__main__':
     model_dir = args.model_dir
 
     # Loss function
-    loss_func = nn.MSELoss()
+    loss_func = nn.CrossEntropyLoss()
 
     # Model
     model = UNet(n_channels=3, n_classes=1)
