@@ -36,9 +36,6 @@ def train(model, train_dataloader, epochs, lr, epochs_till_chkpt,
 
                 model_output = model(model_input)
 
-                model_output = torch.squeeze(model_output)
-                gt = torch.squeeze(gt)
-
                 loss = loss_func(model_output, gt)
 
                 optim.zero_grad()
