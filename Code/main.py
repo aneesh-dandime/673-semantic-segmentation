@@ -1,5 +1,6 @@
 # imports
 import argparse
+import os
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, random_split
@@ -24,8 +25,8 @@ if __name__ == '__main__':
                         help='The number of epochs after which model is saved. Default: 1')
     parser.add_argument('-bs', '--batch_size', type=int, default=100,
                         help='The batch size. Default: 100')
-    parser.add_argument('-md', '--model_dir', type=str, default='../Data/kitti/training',
-                        help='The folder where the dataset is stored. Default: ../Data/kitti/training')
+    parser.add_argument('-md', '--model_dir', type=str, default='../Data/kitti',
+                        help='The folder where the dataset is stored. Default: ../Data/kitti')
     args = parser.parse_args()
 
     # Params
@@ -55,7 +56,7 @@ if __name__ == '__main__':
     print('===========================================================')
 
     # Dataset and dataloader
-    dataset = KittiDataset('../Data/vkitti', shape=(621, 187))
+    dataset = KittiDataset(os.path.join(model_dir, 'training'), shape=(621, 187))
     total_length = len(dataset)
     train_length = int(0.8 * total_length)
     val_length = total_length - train_length
