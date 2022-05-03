@@ -42,6 +42,7 @@ class KittiDataset(Dataset):
             gt = cv2.resize(gt, self.shape)
         inp = self.__normalize(inp)
         gt = self.__normalize(gt)
+        gt = np.expand_dims(gt, axis=2)
         return torch.from_numpy(inp).permute(2, 0, 1), torch.from_numpy(gt).permute(2, 0, 1)
 
 if __name__ == '__main__':
