@@ -14,7 +14,7 @@ class KittiDataset(Dataset):
         self.path = path
         self.shape = shape
         self.input_paths = os.path.join(self.path, 'image_2')
-        self.gt_paths = os.path.join(self.path, 'semantic_rgb')
+        self.gt_paths = os.path.join(self.path, 'semantic')
         self.image_names = self.__get_image_names()
 
     def __get_image_names(self) -> List[str]:
@@ -36,7 +36,7 @@ class KittiDataset(Dataset):
         input_path = os.path.join(self.input_paths, self.image_names[idx])
         gt_path = os.path.join(self.gt_paths, self.image_names[idx])
         inp = cv2.imread(input_path)
-        gt = cv2.imread(gt_path)
+        gt = cv2.imread(gt_path, cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH)
         if self.shape:
             inp = cv2.resize(inp, self.shape)
             gt = cv2.resize(gt, self.shape)
