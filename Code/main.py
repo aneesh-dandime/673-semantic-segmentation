@@ -4,7 +4,7 @@ import os
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, random_split
-from unet import UNet
+from unet2 import UNet
 
 from data import KittiDataset
 from training import train
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     loss_func = nn.CrossEntropyLoss()
 
     # Model
-    model = UNet(n_channels=3, n_classes=1)
+    model = UNet()
     params, train_params = count_params(model)
     print('===========================================================')
     print(f'Starting training...')
