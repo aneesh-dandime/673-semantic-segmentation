@@ -4,9 +4,9 @@ import os
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, random_split
-from Code.unet import UNet
+from unet import UNet
 
-from Code.data import KittiDataset
+from data import KittiDataset
 from training import train
 
 def count_params(model):
