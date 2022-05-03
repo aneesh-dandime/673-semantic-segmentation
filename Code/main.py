@@ -41,7 +41,7 @@ if __name__ == '__main__':
     loss_func = nn.CrossEntropyLoss()
 
     # Model
-    model = UNet(n_channels=3, n_classes=3)
+    model = UNet(n_channels=3, n_classes=1)
     params, train_params = count_params(model)
     print('===========================================================')
     print(f'Starting training...')
