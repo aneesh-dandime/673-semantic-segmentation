@@ -41,7 +41,7 @@ class KittiDataset(Dataset):
             gt = cv2.resize(gt, self.shape)
         inp = self.__normalize(inp)
         gt = self.__normalize(gt)
-        return torch.from_numpy(inp), torch.from_numpy(gt)
+        return torch.from_numpy(inp).permute(2, 0, 1), torch.from_numpy(gt).permute(2, 0, 1)
 
 if __name__ == '__main__':
     dataset = KittiDataset('Data/kitti/training', shape=(621, 187))
